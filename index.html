@@ -3,164 +3,255 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gaganvir Bhullar Portfolio</title>
+  <title>Gaganvir Bhullar | Full-Stack Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
-    /* Global styles */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      color: #333;
+    :root {
+      --primary: #0b3d91;
+      --accent: #f0a500;
+      --bg: #f8fafc;
+      --card-bg: rgba(255, 255, 255, 0.8);
+      --text: #1e293b;
     }
 
-    /* Navigation bar */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      background-image: radial-gradient(at 0% 0%, rgba(11, 61, 145, 0.05) 0px, transparent 50%),
+                        radial-gradient(at 100% 100%, rgba(240, 165, 0, 0.05) 0px, transparent 50%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Modern Glass Nav */
     nav {
-      width: 100%;
-      background-color: #0b3d91;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
       display: flex;
       justify-content: center;
-      padding: 1rem 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 1.2rem 0;
     }
 
     nav a {
-      color: #fff;
+      color: var(--text);
       text-decoration: none;
       margin: 0 1.5rem;
-      font-size: 1.1rem;
-      transition: color 0.2s;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.3s;
     }
 
     nav a:hover {
-      color: #f0a500;
+      color: var(--primary);
     }
 
     header {
       text-align: center;
-      padding: 2rem 1rem 1rem 1rem;
+      padding: 5rem 1rem 3rem;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     header h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-      color: #0b3d91;
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--primary);
+      margin-bottom: 1rem;
     }
 
     header p {
-      font-size: 1.3rem;
-      color: #555;
+      font-size: 1.25rem;
+      color: #64748b;
+      font-weight: 300;
     }
 
-    /* Projects section */
-    .projects {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      justify-content: center;
+    /* Grid Layout */
+    .projects-container {
+      max-width: 1200px;
+      margin: 0 auto;
       padding: 2rem;
     }
 
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
     .project-card {
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      width: 250px;
-      text-align: center;
-      padding: 1.5rem;
-      transition: transform 0.2s, box-shadow 0.2s;
+      background: var(--card-bg);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 10px 30px -15px rgba(0,0,0,0.1);
     }
 
     .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px -20px rgba(11, 61, 145, 0.2);
+      border-color: var(--primary);
+    }
+
+    /* Placeholder for your upcoming images */
+    .project-image-placeholder {
+      width: 100%;
+      height: 180px;
+      background: #e2e8f0;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94a3b8;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
 
     .project-card h2 {
       font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #0b3d91;
+      margin-bottom: 0.75rem;
+      color: var(--primary);
     }
 
     .project-card p {
-      font-size: 1rem;
-      color: #666;
+      font-size: 0.95rem;
+      color: #475569;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
       margin-bottom: 1.5rem;
     }
 
-    .project-card a {
-      display: inline-block;
-      padding: 0.6rem 1.2rem;
-      background-color: #0b3d91;
-      color: #fff;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: background-color 0.2s;
+    .tag {
+      background: #f1f5f9;
+      color: #475569;
+      padding: 0.25rem 0.75rem;
+      border-radius: 99px;
+      font-size: 0.75rem;
+      font-weight: 600;
     }
 
-    .project-card a:hover {
+    .project-link {
+      display: inline-block;
+      text-align: center;
+      padding: 0.8rem;
+      background-color: var(--primary);
+      color: #fff;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .project-link:hover {
       background-color: #06295f;
     }
 
     footer {
-      margin-top: auto;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #777;
+      padding: 4rem 1rem 2rem;
       text-align: center;
+      color: #94a3b8;
+      font-size: 0.9rem;
     }
 
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      .projects {
-        gap: 1rem;
-      }
-      .project-card {
-        width: 90%;
-      }
-      nav a {
-        margin: 0 1rem;
-        font-size: 1rem;
-      }
+      header { padding: 3rem 1.5rem; }
+      .projects-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
   <nav>
-  <a href="#">Home</a>
-  <a href="https://gagan117.github.io/task-manager-frontend/" target="_blank">Task Manager</a>
-  <a href="https://gagan117.github.io/nhl-scores-app/" target="_blank">NHL Scores</a>
-</nav>
+    <a href="#home">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="mailto:your-email@example.com">Contact</a>
+  </nav>
 
-<!-- Header -->
-<header>
-  <h1>Gaganvir Bhullar</h1>
-  <p>Welcome to my portfolio! Explore my projects below.</p>
-</header>
+  <header id="home">
+    <h1>Gaganvir Bhullar</h1>
+    <p>Software Design Lead & Full-Stack Developer specializing in modern mobile and web ecosystems.</p>
+  </header>
 
-<!-- Projects section -->
-<section class="projects">
-  <div class="project-card">
-    <h2>Task Manager</h2>
-    <p>Full-stack Task Manager built with Node.js, Express, MongoDB, and React.</p>
-    <a href="https://gagan117.github.io/task-manager-frontend/" target="_blank">View Project</a>
-  </div>
+  <section class="projects-container" id="projects">
+    <div class="projects-grid">
+      
+      <div class="project-card">
+        <div class="project-image-placeholder">Image Coming Soon</div>
+        <div class="tech-stack">
+          <span class="tag">SwiftUI</span>
+          <span class="tag">Vision Framework</span>
+          <span class="tag">FastAPI</span>
+        </div>
+        <h2>Quick Audit</h2>
+        <p>An intelligent receipt tracking and OCR tool using Apple's Vision framework and Gemini for automated data extraction.</p>
+        <a href="https://github.com/Gagan117/QuickAudit" target="_blank" class="project-link">GitHub Repo</a>
+      </div>
 
-  <div class="project-card">
-    <h2>NHL Scores App</h2>
-    <p>Full-stack NHL Scores app built with Node.js backend, React frontend, and Tailwind for UI.</p>
-    <a href="https://gagan117.github.io/nhl-scores-app/" target="_blank">View Project</a>
-  </div>
-</section>
+      <div class="project-card">
+        <div class="project-image-placeholder">Image Coming Soon</div>
+        <div class="tech-stack">
+          <span class="tag">React Native</span>
+          <span class="tag">Real-time Data</span>
+          <span class="tag">API Integration</span>
+        </div>
+        <h2>NHL Mobile App</h2>
+        <p>A mobile-first sports tracker providing live scores, box scores, and detailed game statistics via external sports APIs.</p>
+        <a href="https://github.com/Gagan117/nhl-game-mobile-app" target="_blank" class="project-link">GitHub Repo</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image-placeholder">Image Coming Soon</div>
+        <div class="tech-stack">
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">CSS</span>
+        </div>
+        <h2>NHL Scores Web</h2>
+        <p>The original web dashboard for NHL scores, featuring customized UI and Nginx reverse proxy deployment.</p>
+        <a href="https://gagan117.github.io/nhl-scores-app/" target="_blank" class="project-link">View Project</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image-placeholder">Image Coming Soon</div>
+        <div class="tech-stack">
+          <span class="tag">MongoDB</span>
+          <span class="tag">Express</span>
+          <span class="tag">React</span>
+          <span class="tag">Node</span>
+        </div>
+        <h2>Task Manager</h2>
+        <p>A full-stack MERN application for productivity management, featuring robust CRUD operations and secure data handling.</p>
+        <a href="https://gagan117.github.io/task-manager-frontend/" target="_blank" class="project-link">View Project</a>
+      </div>
+
+    </div>
+  </section>
 
   <footer>
-    &copy; 2026 Gaganvir Bhullar
+    &copy; 2026 Gaganvir Bhullar | Built with focus and standard CSS.
   </footer>
 
 </body>
