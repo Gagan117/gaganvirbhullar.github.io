@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gaganvir Bhullar | Full-Stack Developer</title>
+  <title>Gaganvir Bhullar | Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #0b3d91;
-      --accent: #f0a500;
+      --secondary: #6366f1; /* Indigo for a modern feel */
+      --accent: #f59e0b;
       --bg: #f8fafc;
-      --card-bg: rgba(255, 255, 255, 0.8);
-      --text: #1e293b;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
     }
 
     * {
@@ -23,161 +25,188 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       background-color: var(--bg);
-      background-image: radial-gradient(at 0% 0%, rgba(11, 61, 145, 0.05) 0px, transparent 50%),
-                        radial-gradient(at 100% 100%, rgba(240, 165, 0, 0.05) 0px, transparent 50%);
-      color: var(--text);
+      color: var(--text-main);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    /* Modern Glass Nav */
+    /* Subtle Animated Background */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
+                  radial-gradient(circle at 90% 80%, rgba(11, 61, 145, 0.05) 0%, transparent 40%);
+      z-index: -1;
+    }
+
     nav {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
       display: flex;
       justify-content: center;
-      padding: 1.2rem 0;
+      padding: 1rem 0;
     }
 
     nav a {
-      color: var(--text);
+      color: var(--text-main);
       text-decoration: none;
-      margin: 0 1.5rem;
+      margin: 0 1.2rem;
       font-weight: 600;
-      font-size: 0.95rem;
-      transition: color 0.3s;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      opacity: 0.7;
     }
 
     nav a:hover {
+      opacity: 1;
       color: var(--primary);
     }
 
     header {
       text-align: center;
-      padding: 5rem 1rem 3rem;
-      max-width: 800px;
+      padding: 6rem 1rem 4rem;
+      max-width: 900px;
       margin: 0 auto;
     }
 
     header h1 {
-      font-size: clamp(2.5rem, 8vw, 4rem);
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
       font-weight: 800;
-      letter-spacing: -0.02em;
-      color: var(--primary);
-      margin-bottom: 1rem;
+      letter-spacing: -0.04em;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
     }
 
     header p {
-      font-size: 1.25rem;
-      color: #64748b;
-      font-weight: 300;
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    /* Grid Layout */
-    .projects-container {
+    .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 2rem;
+      padding: 0 2rem 5rem;
     }
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2.5rem;
     }
 
     .project-card {
       background: var(--card-bg);
-      border: 1px solid rgba(255,255,255,0.3);
-      border-radius: 20px;
-      padding: 2rem;
+      border-radius: 24px;
+      padding: 1.5rem;
+      border: 1px solid #e2e8f0;
       display: flex;
       flex-direction: column;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 0 10px 30px -15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     }
 
     .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px -20px rgba(11, 61, 145, 0.2);
-      border-color: var(--primary);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      border-color: var(--secondary);
     }
 
-    /* Placeholder for your upcoming images */
-    .project-image-placeholder {
+    /* Image area for later */
+    .img-container {
       width: 100%;
-      height: 180px;
-      background: #e2e8f0;
-      border-radius: 12px;
+      height: 200px;
+      background: #f1f5f9;
+      border-radius: 16px;
       margin-bottom: 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
+    }
+
+    .img-container span {
+      font-size: 0.75rem;
+      font-weight: 600;
       color: #94a3b8;
-      font-size: 0.8rem;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.05em;
     }
 
     .project-card h2 {
       font-size: 1.5rem;
       margin-bottom: 0.75rem;
-      color: var(--primary);
+      color: var(--text-main);
     }
 
     .project-card p {
       font-size: 0.95rem;
-      color: #475569;
+      color: var(--text-muted);
       margin-bottom: 1.5rem;
       flex-grow: 1;
     }
 
-    .tech-stack {
+    /* Improved Tech Badges */
+    .tech-pill-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.4rem;
       margin-bottom: 1.5rem;
     }
 
-    .tag {
+    .tech-pill {
       background: #f1f5f9;
       color: #475569;
-      padding: 0.25rem 0.75rem;
-      border-radius: 99px;
-      font-size: 0.75rem;
-      font-weight: 600;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.3rem 0.8rem;
+      border-radius: 8px;
+      text-transform: uppercase;
     }
 
-    .project-link {
-      display: inline-block;
+    /* Specific accent colors for key tech */
+    .pill-supabase { background: #3ecf8e20; color: #069456; }
+    .pill-fastapi { background: #05998b20; color: #05998b; }
+    .pill-expo { background: #00000010; color: #000000; }
+
+    .btn-action {
       text-align: center;
-      padding: 0.8rem;
-      background-color: var(--primary);
-      color: #fff;
-      border-radius: 10px;
+      padding: 0.9rem;
+      background: var(--primary);
+      color: white;
       text-decoration: none;
-      font-weight: 600;
-      transition: background 0.3s;
+      font-weight: 700;
+      border-radius: 12px;
+      transition: background 0.2s;
     }
 
-    .project-link:hover {
-      background-color: #06295f;
+    .btn-action:hover {
+      background: var(--secondary);
     }
 
     footer {
-      padding: 4rem 1rem 2rem;
       text-align: center;
-      color: #94a3b8;
-      font-size: 0.9rem;
+      padding: 4rem 1rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid #e2e8f0;
     }
 
     @media (max-width: 600px) {
-      header { padding: 3rem 1.5rem; }
+      header h1 { font-size: 2.5rem; }
       .projects-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -186,72 +215,75 @@
 
   <nav>
     <a href="#home">Home</a>
-    <a href="#projects">Projects</a>
-    <a href="mailto:your-email@example.com">Contact</a>
+    <a href="#projects">Work</a>
+    <a href="https://github.com/Gagan117" target="_blank">GitHub</a>
   </nav>
 
   <header id="home">
     <h1>Gaganvir Bhullar</h1>
-    <p>Software Design Lead & Full-Stack Developer specializing in modern mobile and web ecosystems.</p>
+    <p>Full-Stack Developer building intelligent mobile experiences with React Native, FastAPI, and Cloud Architecture.</p>
   </header>
 
-  <section class="projects-container" id="projects">
+  <main class="container" id="projects">
     <div class="projects-grid">
       
       <div class="project-card">
-        <div class="project-image-placeholder">Image Coming Soon</div>
-        <div class="tech-stack">
-          <span class="tag">SwiftUI</span>
-          <span class="tag">Vision Framework</span>
-          <span class="tag">FastAPI</span>
+        <div class="img-container"><span>App Screenshot Placeholder</span></div>
+        <div class="tech-pill-container">
+          <span class="tech-pill pill-expo">React Native Expo</span>
+          <span class="tech-pill pill-fastapi">FastAPI</span>
+          <span class="tech-pill pill-supabase">Supabase</span>
+          <span class="tech-pill">OCR</span>
         </div>
         <h2>Quick Audit</h2>
-        <p>An intelligent receipt tracking and OCR tool using Apple's Vision framework and Gemini for automated data extraction.</p>
-        <a href="https://github.com/Gagan117/QuickAudit" target="_blank" class="project-link">GitHub Repo</a>
+        <p>A mobile receipt management tool that uses AI-powered vision to extract data, stored securely via Supabase DB and Auth.</p>
+        <a href="https://github.com/Gagan117/QuickAudit" target="_blank" class="btn-action">View on GitHub</a>
       </div>
 
       <div class="project-card">
-        <div class="project-image-placeholder">Image Coming Soon</div>
-        <div class="tech-stack">
-          <span class="tag">React Native</span>
-          <span class="tag">Real-time Data</span>
-          <span class="tag">API Integration</span>
+        <div class="img-container"><span>App Screenshot Placeholder</span></div>
+        <div class="tech-pill-container">
+          <span class="tech-pill pill-expo">React Native Expo</span>
+          <span class="tech-pill pill-fastapi">FastAPI</span>
+          <span class="tech-pill pill-supabase">Supabase</span>
+          <span class="tech-pill">Live Scores</span>
         </div>
-        <h2>NHL Mobile App</h2>
-        <p>A mobile-first sports tracker providing live scores, box scores, and detailed game statistics via external sports APIs.</p>
-        <a href="https://github.com/Gagan117/nhl-game-mobile-app" target="_blank" class="project-link">GitHub Repo</a>
+        <h2>NHL Guessing Game</h2>
+        <p>A competitive sports app where users predict game outcomes. Features real-time score updates and high-score tracking.</p>
+        <a href="https://github.com/Gagan117/nhl-game-mobile-app" target="_blank" class="btn-action">View on GitHub</a>
       </div>
 
       <div class="project-card">
-        <div class="project-image-placeholder">Image Coming Soon</div>
-        <div class="tech-stack">
-          <span class="tag">React</span>
-          <span class="tag">Node.js</span>
-          <span class="tag">CSS</span>
+        <div class="img-container"><span>Web Preview Placeholder</span></div>
+        <div class="tech-pill-container">
+          <span class="tech-pill">React</span>
+          <span class="tech-pill">Node.js</span>
+          <span class="tech-pill">Tailwind</span>
+          <span class="tech-pill">Nginx</span>
         </div>
         <h2>NHL Scores Web</h2>
-        <p>The original web dashboard for NHL scores, featuring customized UI and Nginx reverse proxy deployment.</p>
-        <a href="https://gagan117.github.io/nhl-scores-app/" target="_blank" class="project-link">View Project</a>
+        <p>Desktop dashboard for tracking live hockey stats. Successfully deployed with SSL and reverse proxy on personal domains.</p>
+        <a href="https://gagan117.github.io/nhl-scores-app/" target="_blank" class="btn-action">Live Demo</a>
       </div>
 
       <div class="project-card">
-        <div class="project-image-placeholder">Image Coming Soon</div>
-        <div class="tech-stack">
-          <span class="tag">MongoDB</span>
-          <span class="tag">Express</span>
-          <span class="tag">React</span>
-          <span class="tag">Node</span>
+        <div class="img-container"><span>Web Preview Placeholder</span></div>
+        <div class="tech-pill-container">
+          <span class="tech-pill">MongoDB</span>
+          <span class="tech-pill">Express</span>
+          <span class="tech-pill">React</span>
+          <span class="tech-pill">Node</span>
         </div>
         <h2>Task Manager</h2>
-        <p>A full-stack MERN application for productivity management, featuring robust CRUD operations and secure data handling.</p>
-        <a href="https://gagan117.github.io/task-manager-frontend/" target="_blank" class="project-link">View Project</a>
+        <p>Comprehensive MERN stack application for project organization, featuring clean CSS and full CRUD functionality.</p>
+        <a href="https://gagan117.github.io/task-manager-frontend/" target="_blank" class="btn-action">Live Demo</a>
       </div>
 
     </div>
-  </section>
+  </main>
 
   <footer>
-    &copy; 2026 Gaganvir Bhullar | Built with focus and standard CSS.
+    &copy; 2026 Gaganvir Bhullar. Built with Standard CSS & Modern UI Principles.
   </footer>
 
 </body>
