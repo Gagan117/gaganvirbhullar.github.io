@@ -11,7 +11,6 @@
     :root {
       --primary: #0b3d91;
       --secondary: #4f46e5;
-      --accent: #f59e0b;
       --bg: #fafafa;
       --card: #ffffff;
       --text-dark: #0f172a;
@@ -29,6 +28,7 @@
       line-height: 1.6;
     }
 
+    /* Navigation */
     nav {
       position: fixed;
       width: 100%;
@@ -52,8 +52,8 @@
       font-size: 0.9rem;
       transition: color 0.3s;
     }
-    .nav-links a:hover { color: var(--secondary); }
 
+    /* Hero */
     .hero {
       padding: 10rem 5% 6rem;
       max-width: 1200px;
@@ -64,105 +64,59 @@
       gap: 2rem;
     }
 
-    .hero-content h1 {
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-content span {
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-content p {
-      font-size: 1.25rem;
-      color: var(--text-light);
-      margin-bottom: 2rem;
-    }
+    .hero-content h1 { font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1; margin-bottom: 1.5rem; }
+    .hero-content span { background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-content p { font-size: 1.2rem; color: var(--text-light); margin-bottom: 2rem; }
 
     .btn-group { display: flex; gap: 1rem; }
-    .btn {
-      padding: 0.8rem 1.8rem;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: all 0.3s;
-    }
+    .btn { padding: 0.8rem 1.8rem; border-radius: 12px; text-decoration: none; font-weight: 700; transition: 0.3s; }
     .btn-primary { background: var(--primary); color: white; }
     .btn-secondary { border: 1px solid var(--border); color: var(--text-dark); }
-    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
-    .section-title {
-      font-size: 2.2rem;
-      margin-bottom: 3rem;
-      text-align: center;
-      font-weight: 800;
-    }
-
+    /* Skills Section - The "Bento" Grid */
     .skills-container { max-width: 1200px; margin: 4rem auto; padding: 0 5%; }
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-    .skill-card { background: var(--card); padding: 2rem; border-radius: 24px; border: 1px solid var(--border); }
-    .skill-card h3 { margin-bottom: 1rem; color: var(--primary); font-size: 1.1rem; }
+    .section-title { font-size: 2.2rem; margin-bottom: 3rem; text-align: center; font-weight: 800; }
+    
+    .skills-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+      gap: 1.5rem; 
+    }
+
+    .skill-card { 
+      background: var(--card); 
+      padding: 2rem; 
+      border-radius: 24px; 
+      border: 1px solid var(--border); 
+      transition: transform 0.3s;
+    }
+    .skill-card:hover { transform: translateY(-5px); }
+    .skill-card h3 { margin-bottom: 1.2rem; color: var(--primary); font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem; }
+    
     .skill-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .skill-item { background: #f1f5f9; padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600; }
+    .skill-item { 
+      background: #f1f5f9; 
+      padding: 0.4rem 0.8rem; 
+      border-radius: 8px; 
+      font-size: 0.8rem; 
+      font-weight: 600; 
+      color: #475569;
+    }
 
+    /* Projects */
     .projects-container { background: #f8fafc; padding: 6rem 5%; }
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 2.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto; }
+    .project-card { background: var(--card); border-radius: 24px; overflow: hidden; border: 1px solid var(--border); transition: 0.3s; display: flex; flex-direction: column; }
+    .project-card:hover { transform: translateY(-10px); }
+    .project-img { width: 100%; height: 220px; background: #e2e8f0; display: flex; align-items: center; justify-content: center; color: var(--text-light); }
+    .project-info { padding: 2rem; flex-grow: 1; }
+    .tag { font-size: 0.7rem; font-weight: 800; background: #eef2ff; color: var(--secondary); padding: 0.2rem 0.6rem; border-radius: 6px; margin-right: 0.4rem; }
 
-    .project-card {
-      background: var(--card);
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      transition: all 0.3s;
-    }
-
-    .project-card:hover { transform: translateY(-10px); border-color: var(--secondary); }
-
-    .project-img {
-      width: 100%;
-      height: 220px;
-      background: #e2e8f0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-light);
-      font-size: 0.8rem;
-      text-transform: uppercase;
-    }
-
-    .project-info { padding: 2rem; flex-grow: 1; display: flex; flex-direction: column; }
-    .project-tags { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
-    .tag { 
-        font-size: 0.7rem; 
-        font-weight: 800; 
-        background: #eef2ff; 
-        color: var(--secondary); 
-        padding: 0.2rem 0.6rem; 
-        border-radius: 6px;
-    }
-
-    .project-info h3 { margin-bottom: 0.75rem; font-size: 1.4rem; }
-    .project-info p { font-size: 0.95rem; color: var(--text-light); margin-bottom: 1.5rem; flex-grow: 1; }
-
-    footer { padding: 4rem 5%; background: white; text-align: center; border-top: 1px solid var(--border); }
-    .social-links { margin: 2rem 0; display: flex; justify-content: center; gap: 2rem; }
-    .social-links a { color: var(--text-dark); text-decoration: none; font-weight: 600; }
+    footer { padding: 4rem 5%; text-align: center; border-top: 1px solid var(--border); }
 
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; text-align: center; }
       .btn-group { justify-content: center; }
-      .nav-links { display: none; }
     }
   </style>
 </head>
@@ -173,116 +127,134 @@
     <div class="nav-links">
       <a href="#home">Home</a>
       <a href="#skills">Skills</a>
-      <a href="#projects">Portfolio</a>
+      <a href="#projects">Work</a>
     </div>
   </nav>
 
-  <section class="hero" id="home">
+  <header class="hero" id="home">
     <div class="hero-content">
-      <h1>Full-Stack Developer & <span>Software Design Lead</span></h1>
-      <p>Building high-performance mobile and web applications with React Native, FastAPI, and Supabase. Currently focused on AI-driven data automation.</p>
+      <h1>Software Developer & <span>Design Lead</span></h1>
+      <p>Specializing in full-stack engineering, mobile ecosystems, and AI-driven automation. Sheridan College Computer Science student with a focus on Distributed Mobility.</p>
       <div class="btn-group">
-        <a href="#projects" class="btn btn-primary">Explore Projects</a>
+        <a href="#projects" class="btn btn-primary">View Projects</a>
         <a href="https://github.com/Gagan117" target="_blank" class="btn btn-secondary">GitHub</a>
       </div>
     </div>
-    <div style="background: linear-gradient(135deg, #0b3d9110, #4f46e510); height: 350px; border-radius: 30px; border: 2px dashed #e2e8f0; display: flex; align-items: center; justify-content: center;">
-      <span style="color: #94a3b8;">[Profile Image Placeholder]</span>
+    <div style="background: linear-gradient(135deg, #0b3d9110, #4f46e510); height: 350px; border-radius: 30px; border: 2px dashed #e2e8f0; display: flex; align-items: center; justify-content: center; color: #94a3b8;">
+      [Portrait Placeholder]
     </div>
-  </section>
+  </header>
 
   <section class="skills-container" id="skills">
-    <h2 class="section-title">Technical Arsenal</h2>
+    <h2 class="section-title">Technical Expertise</h2>
     <div class="skills-grid">
+      
       <div class="skill-card">
-        <h3>Frontend & Mobile</h3>
+        <h3>Languages</h3>
         <div class="skill-list">
-          <span class="skill-item">React Native (Expo)</span>
+          <span class="skill-item">Java</span>
+          <span class="skill-item">Python</span>
+          <span class="skill-item">Swift</span>
+          <span class="skill-item">Kotlin</span>
+          <span class="skill-item">C++</span>
+          <span class="skill-item">C#</span>
+          <span class="skill-item">JavaScript</span>
+          <span class="skill-item">HTML/CSS</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h3>Frameworks & Libraries</h3>
+        <div class="skill-list">
+          <span class="skill-item">React Native</span>
           <span class="skill-item">React.js</span>
-          <span class="skill-item">SwiftUI</span>
-          <span class="skill-item">CSS3</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <h3>Backend & Cloud</h3>
-        <div class="skill-list">
           <span class="skill-item">FastAPI</span>
+          <span class="skill-item">Spring Boot</span>
           <span class="skill-item">Node.js</span>
-          <span class="skill-item">Supabase</span>
-          <span class="skill-item">AWS EC2</span>
-          <span class="skill-item">Nginx</span>
+          <span class="skill-item">.NET / ASP.NET</span>
         </div>
       </div>
+
       <div class="skill-card">
-        <h3>Specialized</h3>
+        <h3>Databases & Cloud</h3>
         <div class="skill-list">
-          <span class="skill-item">OCR & Vision</span>
-          <span class="skill-item">LLM Data Parsing</span>
-          <span class="skill-item">Git / GitHub</span>
+          <span class="skill-item">PostgreSQL</span>
+          <span class="skill-item">Supabase</span>
           <span class="skill-item">MongoDB</span>
+          <span class="skill-item">Firebase</span>
+          <span class="skill-item">AWS (EC2)</span>
+          <span class="skill-item">GCP</span>
         </div>
       </div>
+
+      <div class="skill-card">
+        <h3>Tools & DevOps</h3>
+        <div class="skill-list">
+          <span class="skill-item">Docker</span>
+          <span class="skill-item">Git</span>
+          <span class="skill-item">Nginx</span>
+          <span class="skill-item">Linux/Bash</span>
+          <span class="skill-item">Android Studio</span>
+          <span class="skill-item">VMware</span>
+          <span class="skill-item">Agile/JIRA</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h3>AI & Data Engineering</h3>
+        <div class="skill-list">
+          <span class="skill-item">Generative AI APIs</span>
+          <span class="skill-item">Prompt Engineering</span>
+          <span class="skill-item">OCR (Tesseract)</span>
+          <span class="skill-item">Apache Spark</span>
+          <span class="skill-item">Hadoop</span>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <section class="projects-container" id="projects">
-    <h2 class="section-title">Selected Projects</h2>
+    <h2 class="section-title">Featured Work</h2>
     <div class="projects-grid">
       
       <div class="project-card">
-        <div class="project-img">Quick Audit Screenshot</div>
+        <div class="project-img">Quick Audit Preview</div>
         <div class="project-info">
-          <div class="project-tags">
-            <span class="tag">React Native</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">Supabase</span>
-          </div>
+          <span class="tag">React Native</span><span class="tag">FastAPI</span>
           <h3>Quick Audit</h3>
-          <p>AI-powered mobile receipt tracker. Uses Vision frameworks and Gemini for automated data extraction and expense management.</p>
-          <a href="https://github.com/Gagan117/QuickAudit" target="_blank" class="btn btn-primary">View GitHub</a>
+          <p>AI receipt tracking app using Apple Vision and Gemini for intelligent data parsing.</p>
+          <a href="https://github.com/Gagan117/QuickAudit" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">GitHub</a>
         </div>
       </div>
 
       <div class="project-card">
-        <div class="project-img">NHL Mobile Screenshot</div>
+        <div class="project-img">NHL Mobile Preview</div>
         <div class="project-info">
-          <div class="project-tags">
-            <span class="tag">React Native</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">Supabase Auth</span>
-          </div>
+          <span class="tag">React Native</span><span class="tag">Supabase</span>
           <h3>NHL Guessing Game</h3>
-          <p>A mobile prediction app where fans guess game winners. Real-time NHL API integration with user high-score leaderboards.</p>
-          <a href="https://github.com/Gagan117/nhl-game-mobile-app" target="_blank" class="btn btn-primary">View GitHub</a>
+          <p>Gamified sports prediction platform with real-time score tracking and leaderboards.</p>
+          <a href="https://github.com/Gagan117/nhl-game-mobile-app" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">GitHub</a>
         </div>
       </div>
 
       <div class="project-card">
-        <div class="project-img">NHL Web Dashboard</div>
+        <div class="project-img">NHL Web Preview</div>
         <div class="project-info">
-          <div class="project-tags">
-            <span class="tag">React</span>
-            <span class="tag">Node.js</span>
-            <span class="tag">AWS / Nginx</span>
-          </div>
+          <span class="tag">React</span><span class="tag">AWS EC2</span>
           <h3>NHL Scores Web</h3>
-          <p>Full-stack dashboard for live NHL scores and stats. Deployed on AWS EC2 with a custom Nginx reverse proxy setup.</p>
-          <a href="https://gagan117.github.io/nhl-scores-app/" target="_blank" class="btn btn-primary">Live Demo</a>
+          <p>Live stats dashboard deployed on AWS using Nginx and secure reverse proxying.</p>
+          <a href="https://gagan117.github.io/nhl-scores-app/" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">Live Demo</a>
         </div>
       </div>
 
       <div class="project-card">
         <div class="project-img">Task Manager Preview</div>
         <div class="project-info">
-          <div class="project-tags">
-            <span class="tag">MongoDB</span>
-            <span class="tag">Express</span>
-            <span class="tag">React</span>
-            <span class="tag">Node</span>
-          </div>
-          <h3>MERN Task Manager</h3>
-          <p>Productivity application featuring full CRUD, secure user authentication, and organized project categorization.</p>
-          <a href="https://gagan117.github.io/task-manager-frontend/" target="_blank" class="btn btn-primary">Live Demo</a>
+          <span class="tag">MERN Stack</span>
+          <h3>Task Manager</h3>
+          <p>Productivity tool with secure user authentication and MongoDB-backed persistence.</p>
+          <a href="https://gagan117.github.io/task-manager-frontend/" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">Live Demo</a>
         </div>
       </div>
 
@@ -290,12 +262,12 @@
   </section>
 
   <footer>
-    <div class="social-links">
-      <a href="https://github.com/Gagan117" target="_blank">GitHub</a>
-      <a href="mailto:your-email@example.com">Email</a>
-      <a href="#">LinkedIn</a>
+    <p>Let's build something impactful.</p>
+    <div style="margin: 1.5rem 0;">
+      <a href="https://github.com/Gagan117" target="_blank" style="margin: 0 1rem; color: var(--text-dark); text-decoration: none; font-weight: 700;">GitHub</a>
+      <a href="mailto:your-email@example.com" style="margin: 0 1rem; color: var(--text-dark); text-decoration: none; font-weight: 700;">Email</a>
     </div>
-    <p>&copy; 2026 Gaganvir Bhullar. Built with precision.</p>
+    <p style="font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Gaganvir Bhullar</p>
   </footer>
 
 </body>
