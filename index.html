@@ -121,11 +121,11 @@
     .project-card { background: var(--card); border-radius: 24px; overflow: hidden; border: 1px solid var(--border); display: flex; flex-direction: column; height: 100%; transition: 0.3s; }
     .project-card:hover { transform: translateY(-5px); border-color: var(--secondary); }
 
-    /* --- THE FIX IS HERE --- */
+    /* --- ENHANCED GALLERY SCROLL --- */
     .screenshot-gallery {
       display: flex;
       flex-direction: row;
-      flex-wrap: nowrap; /* Forces them to stay in one line */
+      flex-wrap: nowrap;
       gap: 20px;
       overflow-x: auto; /* Active scrolling */
       overflow-y: hidden;
@@ -133,25 +133,31 @@
       background: var(--gallery-bg);
       width: 100%;
       min-width: 100%;
-      cursor: grab;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
     }
 
-    /* Keep scrollbar invisible but functional */
-    .screenshot-gallery::-webkit-scrollbar { display: none; }
-    .screenshot-gallery { -ms-overflow-style: none; scrollbar-width: none; }
+    /* Modern Visible Scrollbar for Desktop */
+    .screenshot-gallery::-webkit-scrollbar {
+      height: 8px;
+    }
+    .screenshot-gallery::-webkit-scrollbar-track {
+      background: var(--gallery-bg);
+    }
+    .screenshot-gallery::-webkit-scrollbar-thumb {
+      background: var(--text-light);
+      border-radius: 10px;
+    }
 
     .screenshot-gallery img {
-      height: 400px; /* Tall enough for mobile screens */
+      height: 400px;
       width: auto;
-      flex: 0 0 auto; /* CRITICAL: Prevents shrinking, allows overflow */
+      flex: 0 0 auto; /* Stop images from shrinking */
       border-radius: 18px;
       border: 1px solid var(--border);
       box-shadow: 0 8px 20px rgba(0,0,0,0.12);
       scroll-snap-align: start;
     }
-    /* ----------------------- */
 
     .project-img-placeholder { 
       width: 100%; height: 200px; background: var(--gallery-bg); 
@@ -209,7 +215,6 @@
           <div class="skill-item"><i class="devicon-html5-plain"></i> HTML/CSS</div>
         </div>
       </div>
-
       <div class="skill-card">
         <h3>Frameworks</h3>
         <div class="skill-list">
@@ -221,7 +226,6 @@
           <div class="skill-item"><i class="devicon-dotnetcore-plain"></i> .NET Core</div>
         </div>
       </div>
-
       <div class="skill-card">
         <h3>Databases & Cloud</h3>
         <div class="skill-list">
@@ -233,7 +237,6 @@
           <div class="skill-item"><i class="devicon-googlecloud-plain"></i> GCP</div>
         </div>
       </div>
-
       <div class="skill-card">
         <h3>Tools & DevOps</h3>
         <div class="skill-list">
@@ -253,10 +256,10 @@
     <div class="projects-grid">
       
       <div class="project-card">
-        <div class="screenshot-gallery">
-          <img src="assets/Screenshot_20260325_095629_Expo Go.jpg" alt="NHL App 1">
-          <img src="assets/Screenshot_20260325_095645_Expo Go.jpg" alt="NHL App 2">
-          <img src="assets/Screenshot_20260325_095711_Expo Go.jpg" alt="NHL App 3">
+        <div class="screenshot-gallery" id="nhl-gallery">
+          <img src="assets/nhl-details.jpg" alt="NHL App 1">
+          <img src="assets/nhl-home.jpg" alt="NHL App 2">
+          <img src="assets/nhl-profile.jpg" alt="NHL App 3">
         </div>
         <div class="project-info">
           <div style="margin-bottom: 0.5rem;">
@@ -288,28 +291,19 @@
         </div>
       </div>
 
-      <div class="project-card">
-        <div class="project-img-placeholder">MERN Task Manager</div>
-        <div class="project-info">
-          <span class="tag">MongoDB</span><span class="tag">Express</span><span class="tag">React</span>
-          <h3>Task Manager</h3>
-          <p>Full-stack productivity tool featuring JWT authentication.</p>
-          <a href="https://gagan117.github.io/task-manager-frontend/" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">Live Demo</a>
-        </div>
-      </div>
-
     </div>
   </section>
 
   <footer>
     <div style="margin-bottom: 2rem;">
       <a href="https://github.com/Gagan117" target="_blank" style="margin: 0 1rem; color: var(--text-dark); text-decoration: none; font-weight: 700;">GitHub</a>
-      <a href="mailto:your-email@example.com" style="margin: 0 1rem; color: var(--text-dark); text-decoration: none; font-weight: 700;">Email</a>
+      <a href="mailto:gaganvir.bhullar@example.com" style="margin: 0 1rem; color: var(--text-dark); text-decoration: none; font-weight: 700;">Email</a>
     </div>
     <p style="font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Gaganvir Bhullar</p>
   </footer>
 
   <script>
+    // Theme Toggle Logic
     const themeToggle = document.getElementById('theme-toggle');
     const currentTheme = localStorage.getItem('theme');
 
@@ -329,6 +323,13 @@
         localStorage.setItem('theme', 'dark');
         themeToggle.textContent = '☀️';
       }
+    });
+
+    // HORIZONTAL SCROLL FIX FOR MOUSE WHEEL
+    const scrollContainer = document.getElementById('nhl-gallery');
+    scrollContainer.addEventListener('wheel', (evt) => {
+      evt.preventDefault();
+      scrollContainer.scrollLeft += evt.deltaY;
     });
   </script>
 
