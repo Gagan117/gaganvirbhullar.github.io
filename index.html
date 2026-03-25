@@ -257,26 +257,30 @@
       
       <div class="project-card">
         <div class="screenshot-gallery" id="nhl-gallery">
-          <img src="assets/nhl-details.jpg" alt="NHL App 1">
-          <img src="assets/nhl-home.jpg" alt="NHL App 2">
-          <img src="assets/nhl-profile.jpg" alt="NHL App 3">
+          <img src="/assets/nhl-home.jpg" alt="NHL Home">
+          <img src="/assets/nhl-details.jpg" alt="NHL Details">
+          <img src="/assets/nhl-profile.jpg" alt="NHL Profile">
         </div>
         <div class="project-info">
           <div style="margin-bottom: 0.5rem;">
             <span class="tag">React Native</span><span class="tag">Supabase</span><span class="tag">FastAPI</span>
           </div>
           <h3>NHL Guessing Game</h3>
-          <p>A full-stack mobile application featuring real-time scores and global leaderboards.</p>
+          <p>A production-ready mobile platform for real-time hockey analytics and social gaming. Built with a robust defensive UI to handle dynamic game states—from pre-game matchups to live "puck-drop" updates and final scoring summaries.</p>
           <a href="https://github.com/Gagan117/nhl-game-mobile-app" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">GitHub Repo</a>
         </div>
       </div>
 
       <div class="project-card">
-        <div class="project-img-placeholder">Quick Audit Preview</div>
+        <div class="screenshot-gallery" id="qa-gallery">
+          <img src="/assets/QAScan.jpg" alt="Quick Audit Scan">
+          <img src="/assets/QAHome.jpg" alt="Quick Audit Home">
+          <img src="/assets/QAInsights.jpg" alt="Quick Audit Insights">
+        </div>
         <div class="project-info">
           <span class="tag">React Native</span><span class="tag">Gemini AI</span>
           <h3>Quick Audit</h3>
-          <p>AI expense management utilizing Apple Vision and Google Gemini.</p>
+          <p>Eliminating manual data entry in personal finance. Quick Audit uses advanced computer vision and LLMs to instantly extract line-item data from receipts, providing users with automated expense tracking and intelligent spending insights.</p>
           <a href="https://github.com/Gagan117/QuickAudit" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">View Code</a>
         </div>
       </div>
@@ -326,10 +330,15 @@
     });
 
     // HORIZONTAL SCROLL FIX FOR MOUSE WHEEL
-    const scrollContainer = document.getElementById('nhl-gallery');
-    scrollContainer.addEventListener('wheel', (evt) => {
-      evt.preventDefault();
-      scrollContainer.scrollLeft += evt.deltaY;
+    const galleries = ['nhl-gallery', 'qa-gallery'];
+    galleries.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('wheel', (evt) => {
+          evt.preventDefault();
+          el.scrollLeft += evt.deltaY;
+        });
+      }
     });
   </script>
 
