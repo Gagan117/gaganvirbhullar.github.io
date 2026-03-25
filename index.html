@@ -42,7 +42,6 @@
       line-height: 1.6;
     }
 
-    /* Navigation */
     nav {
       position: fixed;
       width: 100%;
@@ -66,7 +65,6 @@
       font-size: 0.9rem;
     }
 
-    /* Dark Mode Toggle */
     #theme-toggle {
       position: fixed;
       bottom: 2rem;
@@ -86,7 +84,6 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
 
-    /* Hero Section */
     .hero {
       padding: 12rem 5% 8rem;
       max-width: 900px;
@@ -95,16 +92,13 @@
     }
 
     .hero-content h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
-    
-    /* Updated for Compatibility */
     .hero-content span { 
       background: linear-gradient(to right, var(--primary), var(--secondary)); 
       -webkit-background-clip: text; 
       background-clip: text; 
       -webkit-text-fill-color: transparent; 
-      color: transparent; /* Fallback for transparency */
+      color: transparent; 
     }
-
     .hero-content p { font-size: 1.25rem; color: var(--text-light); margin-bottom: 2.5rem; max-width: 700px; margin-left: auto; margin-right: auto; }
 
     .btn-group { display: flex; gap: 1rem; justify-content: center; }
@@ -113,7 +107,6 @@
     .btn-secondary { border-color: var(--border); color: var(--text-dark); }
     .btn:hover { transform: translateY(-3px); }
 
-    /* Skills */
     .skills-container { max-width: 1200px; margin: 4rem auto; padding: 0 5%; }
     .section-title { font-size: 2.2rem; margin-bottom: 3.5rem; text-align: center; font-weight: 800; }
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
@@ -123,26 +116,35 @@
     .skill-item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; font-weight: 600; color: var(--text-light); }
     .skill-item i { font-size: 1.25rem; color: var(--text-dark); width: 20px; text-align: center; }
 
-    /* Projects & Screenshot Gallery */
+    /* Projects Section */
     .projects-container { background: rgba(0,0,0,0.02); padding: 6rem 5%; }
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto; }
     .project-card { background: var(--card); border-radius: 24px; overflow: hidden; border: 1px solid var(--border); display: flex; flex-direction: column; height: 100%; transition: 0.3s; }
     .project-card:hover { transform: translateY(-5px); border-color: var(--secondary); }
 
+    /* FIXED GALLERY STYLES */
     .screenshot-gallery {
       display: flex;
-      gap: 12px;
-      overflow-x: auto;
+      gap: 15px;
+      overflow-x: scroll; /* Forces scrolling capability */
       padding: 1.5rem;
       background: var(--gallery-bg);
-      scrollbar-width: none;
+      scroll-snap-type: x mandatory; /* Modern snapping effect */
+      -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
     }
+
+    /* Hide scrollbars but keep functionality */
     .screenshot-gallery::-webkit-scrollbar { display: none; }
+    .screenshot-gallery { -ms-overflow-style: none; scrollbar-width: none; }
+
     .screenshot-gallery img {
-      height: 300px;
-      border-radius: 12px;
+      height: 350px;
+      width: auto;
+      flex-shrink: 0; /* Prevents images from squishing */
+      border-radius: 16px;
       border: 1px solid var(--border);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      scroll-snap-align: center; /* Snaps image to center of gallery */
     }
 
     .project-img-placeholder { 
@@ -159,6 +161,7 @@
       .skill-list { grid-template-columns: 1fr; }
       .hero { padding-top: 10rem; }
       .btn-group { flex-direction: column; }
+      .screenshot-gallery img { height: 280px; } /* Slightly smaller for mobile phones */
     }
   </style>
 </head>
@@ -196,8 +199,6 @@
           <div class="skill-item"><i class="devicon-python-plain"></i> Python</div>
           <div class="skill-item"><i class="devicon-swift-plain"></i> Swift</div>
           <div class="skill-item"><i class="devicon-kotlin-plain"></i> Kotlin</div>
-          <div class="skill-item"><i class="devicon-cplusplus-plain"></i> C++</div>
-          <div class="skill-item"><i class="devicon-csharp-plain"></i> C#</div>
           <div class="skill-item"><i class="devicon-javascript-plain"></i> JavaScript</div>
           <div class="skill-item"><i class="devicon-html5-plain"></i> HTML/CSS</div>
         </div>
@@ -222,7 +223,7 @@
           <div class="skill-item"><i class="devicon-supabase-plain"></i> Supabase</div>
           <div class="skill-item"><i class="devicon-mongodb-plain"></i> MongoDB</div>
           <div class="skill-item"><i class="devicon-firebase-plain"></i> Firebase</div>
-          <div class="skill-item"><i class="devicon-amazonwebservices-plain-wordmark"></i> AWS (EC2)</div>
+          <div class="skill-item"><i class="devicon-amazonwebservices-plain-wordmark"></i> AWS</div>
           <div class="skill-item"><i class="devicon-googlecloud-plain"></i> GCP</div>
         </div>
       </div>
@@ -233,9 +234,9 @@
           <div class="skill-item"><i class="devicon-docker-plain"></i> Docker</div>
           <div class="skill-item"><i class="devicon-git-plain"></i> Git</div>
           <div class="skill-item"><i class="devicon-nginx-original"></i> Nginx</div>
-          <div class="skill-item"><i class="devicon-linux-plain"></i> Linux/Bash</div>
+          <div class="skill-item"><i class="devicon-linux-plain"></i> Linux</div>
           <div class="skill-item"><i class="devicon-androidstudio-plain"></i> Android Studio</div>
-          <div class="skill-item"><i class="devicon-jira-plain"></i> Agile/JIRA</div>
+          <div class="skill-item"><i class="devicon-jira-plain"></i> Jira</div>
         </div>
       </div>
     </div>
@@ -249,44 +250,45 @@
         <div class="screenshot-gallery">
           <img src="assets/nhl-profile.jpg" alt="NHL App Profile View">
           <img src="assets/nhl-home.jpg" alt="NHL App Game List">
-          <img src="assets/nhl-details.jpg" alt="NHL App Prediction Logic">
+          <img src="assets/nhl-details.jpg" alt="NHL App Prediction Details">
+          <img src="assets/nhl-login.jpg" alt="NHL App Login Screen">
         </div>
         <div class="project-info">
           <div style="margin-bottom: 0.5rem;">
-            <span class="tag">React Native</span><span class="tag">Supabase</span>
+            <span class="tag">React Native</span><span class="tag">Supabase</span><span class="tag">FastAPI</span>
           </div>
           <h3>NHL Guessing Game</h3>
-          <p>Gamified sports platform with real-time score tracking, user stats, and prediction leaderboards.</p>
-          <a href="https://github.com/Gagan117/nhl-game-mobile-app" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">GitHub</a>
+          <p>A full-stack mobile application featuring real-time scores, global leaderboards, and AI-driven game predictions.</p>
+          <a href="https://github.com/Gagan117/nhl-game-mobile-app" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">GitHub Repo</a>
         </div>
       </div>
 
       <div class="project-card">
         <div class="project-img-placeholder">Quick Audit Preview</div>
         <div class="project-info">
-          <span class="tag">React Native</span><span class="tag">FastAPI</span>
+          <span class="tag">React Native</span><span class="tag">Gemini AI</span>
           <h3>Quick Audit</h3>
-          <p>AI receipt tracking app using Apple Vision and Gemini for intelligent data parsing.</p>
-          <a href="https://github.com/Gagan117/QuickAudit" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">GitHub</a>
+          <p>AI-powered expense management utilizing Apple Vision and Google Gemini for automated receipt parsing.</p>
+          <a href="https://github.com/Gagan117/QuickAudit" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">View Code</a>
         </div>
       </div>
 
       <div class="project-card">
-        <div class="project-img-placeholder">NHL Web Preview</div>
+        <div class="project-img-placeholder">NHL Web Dashboard</div>
         <div class="project-info">
-          <span class="tag">React</span><span class="tag">AWS EC2</span>
+          <span class="tag">React</span><span class="tag">AWS EC2</span><span class="tag">Nginx</span>
           <h3>NHL Scores Web</h3>
-          <p>Live stats dashboard deployed on AWS using Nginx and secure reverse proxying.</p>
+          <p>Live stats dashboard deployed with a secure Nginx reverse proxy on AWS infrastructure.</p>
           <a href="https://gagan117.github.io/nhl-scores-app/" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">Live Demo</a>
         </div>
       </div>
 
       <div class="project-card">
-        <div class="project-img-placeholder">Task Manager Preview</div>
+        <div class="project-img-placeholder">MERN Task Manager</div>
         <div class="project-info">
-          <span class="tag">MERN Stack</span>
+          <span class="tag">MongoDB</span><span class="tag">Express</span><span class="tag">React</span>
           <h3>Task Manager</h3>
-          <p>Productivity tool with secure user authentication and MongoDB-backed persistence.</p>
+          <p>Full-stack productivity tool featuring JWT authentication and persistent database storage.</p>
           <a href="https://gagan117.github.io/task-manager-frontend/" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">Live Demo</a>
         </div>
       </div>
