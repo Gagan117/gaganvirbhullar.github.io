@@ -116,36 +116,42 @@
     .skill-item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; font-weight: 600; color: var(--text-light); }
     .skill-item i { font-size: 1.25rem; color: var(--text-dark); width: 20px; text-align: center; }
 
-    /* Projects Section */
     .projects-container { background: rgba(0,0,0,0.02); padding: 6rem 5%; }
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto; }
     .project-card { background: var(--card); border-radius: 24px; overflow: hidden; border: 1px solid var(--border); display: flex; flex-direction: column; height: 100%; transition: 0.3s; }
     .project-card:hover { transform: translateY(-5px); border-color: var(--secondary); }
 
-    /* FIXED GALLERY STYLES */
+    /* --- THE FIX IS HERE --- */
     .screenshot-gallery {
       display: flex;
-      gap: 15px;
-      overflow-x: scroll; /* Forces scrolling capability */
+      flex-direction: row;
+      flex-wrap: nowrap; /* Forces them to stay in one line */
+      gap: 20px;
+      overflow-x: auto; /* Active scrolling */
+      overflow-y: hidden;
       padding: 1.5rem;
       background: var(--gallery-bg);
-      scroll-snap-type: x mandatory; /* Modern snapping effect */
-      -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
+      width: 100%;
+      min-width: 100%;
+      cursor: grab;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
     }
 
-    /* Hide scrollbars but keep functionality */
+    /* Keep scrollbar invisible but functional */
     .screenshot-gallery::-webkit-scrollbar { display: none; }
     .screenshot-gallery { -ms-overflow-style: none; scrollbar-width: none; }
 
     .screenshot-gallery img {
-      height: 350px;
+      height: 400px; /* Tall enough for mobile screens */
       width: auto;
-      flex-shrink: 0; /* Prevents images from squishing */
-      border-radius: 16px;
+      flex: 0 0 auto; /* CRITICAL: Prevents shrinking, allows overflow */
+      border-radius: 18px;
       border: 1px solid var(--border);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      scroll-snap-align: center; /* Snaps image to center of gallery */
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      scroll-snap-align: start;
     }
+    /* ----------------------- */
 
     .project-img-placeholder { 
       width: 100%; height: 200px; background: var(--gallery-bg); 
@@ -161,7 +167,7 @@
       .skill-list { grid-template-columns: 1fr; }
       .hero { padding-top: 10rem; }
       .btn-group { flex-direction: column; }
-      .screenshot-gallery img { height: 280px; } /* Slightly smaller for mobile phones */
+      .screenshot-gallery img { height: 320px; }
     }
   </style>
 </head>
@@ -248,17 +254,16 @@
       
       <div class="project-card">
         <div class="screenshot-gallery">
-          <img src="assets/nhl-profile.jpg" alt="NHL App Profile View">
-          <img src="assets/nhl-home.jpg" alt="NHL App Game List">
-          <img src="assets/nhl-details.jpg" alt="NHL App Prediction Details">
-          <img src="assets/nhl-login.jpg" alt="NHL App Login Screen">
+          <img src="assets/Screenshot_20260325_095629_Expo Go.jpg" alt="NHL App 1">
+          <img src="assets/Screenshot_20260325_095645_Expo Go.jpg" alt="NHL App 2">
+          <img src="assets/Screenshot_20260325_095711_Expo Go.jpg" alt="NHL App 3">
         </div>
         <div class="project-info">
           <div style="margin-bottom: 0.5rem;">
             <span class="tag">React Native</span><span class="tag">Supabase</span><span class="tag">FastAPI</span>
           </div>
           <h3>NHL Guessing Game</h3>
-          <p>A full-stack mobile application featuring real-time scores, global leaderboards, and AI-driven game predictions.</p>
+          <p>A full-stack mobile application featuring real-time scores and global leaderboards.</p>
           <a href="https://github.com/Gagan117/nhl-game-mobile-app" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">GitHub Repo</a>
         </div>
       </div>
@@ -268,7 +273,7 @@
         <div class="project-info">
           <span class="tag">React Native</span><span class="tag">Gemini AI</span>
           <h3>Quick Audit</h3>
-          <p>AI-powered expense management utilizing Apple Vision and Google Gemini for automated receipt parsing.</p>
+          <p>AI expense management utilizing Apple Vision and Google Gemini.</p>
           <a href="https://github.com/Gagan117/QuickAudit" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">View Code</a>
         </div>
       </div>
@@ -278,7 +283,7 @@
         <div class="project-info">
           <span class="tag">React</span><span class="tag">AWS EC2</span><span class="tag">Nginx</span>
           <h3>NHL Scores Web</h3>
-          <p>Live stats dashboard deployed with a secure Nginx reverse proxy on AWS infrastructure.</p>
+          <p>Live stats dashboard deployed with Nginx reverse proxy on AWS.</p>
           <a href="https://gagan117.github.io/nhl-scores-app/" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">Live Demo</a>
         </div>
       </div>
@@ -288,7 +293,7 @@
         <div class="project-info">
           <span class="tag">MongoDB</span><span class="tag">Express</span><span class="tag">React</span>
           <h3>Task Manager</h3>
-          <p>Full-stack productivity tool featuring JWT authentication and persistent database storage.</p>
+          <p>Full-stack productivity tool featuring JWT authentication.</p>
           <a href="https://gagan117.github.io/task-manager-frontend/" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">Live Demo</a>
         </div>
       </div>
