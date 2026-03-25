@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* CSS Variables for easy switching */
     :root {
       --primary: #0b3d91;
       --secondary: #4f46e5;
@@ -19,9 +18,9 @@
       --text-light: #64748b;
       --border: #e2e8f0;
       --nav-bg: rgba(255, 255, 255, 0.8);
+      --gallery-bg: #f1f5f9;
     }
 
-    /* Dark Mode Overrides */
     [data-theme="dark"] {
       --bg: #0f172a;
       --card: #1e293b;
@@ -30,6 +29,7 @@
       --border: #334155;
       --nav-bg: rgba(15, 23, 42, 0.8);
       --secondary: #818cf8;
+      --gallery-bg: #020617;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; transition: background-color 0.3s, border-color 0.3s, color 0.3s; }
@@ -42,6 +42,7 @@
       line-height: 1.6;
     }
 
+    /* Navigation */
     nav {
       position: fixed;
       width: 100%;
@@ -65,7 +66,7 @@
       font-size: 0.9rem;
     }
 
-    /* Dark Mode Toggle Button */
+    /* Dark Mode Toggle */
     #theme-toggle {
       position: fixed;
       bottom: 2rem;
@@ -85,6 +86,7 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
 
+    /* Hero Section */
     .hero {
       padding: 12rem 5% 8rem;
       max-width: 900px;
@@ -93,41 +95,61 @@
     }
 
     .hero-content h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
-    .hero-content span { background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero-content p { font-size: 1.25rem; color: var(--text-light); margin-bottom: 2.5rem; }
+    
+    /* Updated for Compatibility */
+    .hero-content span { 
+      background: linear-gradient(to right, var(--primary), var(--secondary)); 
+      -webkit-background-clip: text; 
+      background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      color: transparent; /* Fallback for transparency */
+    }
+
+    .hero-content p { font-size: 1.25rem; color: var(--text-light); margin-bottom: 2.5rem; max-width: 700px; margin-left: auto; margin-right: auto; }
 
     .btn-group { display: flex; gap: 1rem; justify-content: center; }
-    .btn { padding: 0.9rem 2rem; border-radius: 12px; text-decoration: none; font-weight: 700; }
+    .btn { padding: 0.9rem 2rem; border-radius: 12px; text-decoration: none; font-weight: 700; transition: 0.3s; border: 1px solid transparent; }
     .btn-primary { background: var(--primary); color: white; }
-    .btn-secondary { border: 1px solid var(--border); color: var(--text-dark); }
+    .btn-secondary { border-color: var(--border); color: var(--text-dark); }
+    .btn:hover { transform: translateY(-3px); }
 
+    /* Skills */
     .skills-container { max-width: 1200px; margin: 4rem auto; padding: 0 5%; }
     .section-title { font-size: 2.2rem; margin-bottom: 3.5rem; text-align: center; font-weight: 800; }
-    
-    .skills-grid { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-      gap: 1.5rem; 
-    }
-
-    .skill-card { 
-      background: var(--card); 
-      padding: 2rem; 
-      border-radius: 24px; 
-      border: 1px solid var(--border); 
-    }
-
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .skill-card { background: var(--card); padding: 2rem; border-radius: 24px; border: 1px solid var(--border); }
     .skill-card h3 { margin-bottom: 1.5rem; color: var(--primary); font-size: 1.1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem; }
     .skill-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     .skill-item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; font-weight: 600; color: var(--text-light); }
     .skill-item i { font-size: 1.25rem; color: var(--text-dark); width: 20px; text-align: center; }
 
+    /* Projects & Screenshot Gallery */
     .projects-container { background: rgba(0,0,0,0.02); padding: 6rem 5%; }
-    [data-theme="dark"] .projects-container { background: rgba(0,0,0,0.2); }
-
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto; }
-    .project-card { background: var(--card); border-radius: 24px; overflow: hidden; border: 1px solid var(--border); display: flex; flex-direction: column; }
-    .project-img { width: 100%; height: 220px; background: var(--border); display: flex; align-items: center; justify-content: center; color: var(--text-light); }
+    .project-card { background: var(--card); border-radius: 24px; overflow: hidden; border: 1px solid var(--border); display: flex; flex-direction: column; height: 100%; transition: 0.3s; }
+    .project-card:hover { transform: translateY(-5px); border-color: var(--secondary); }
+
+    .screenshot-gallery {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 1.5rem;
+      background: var(--gallery-bg);
+      scrollbar-width: none;
+    }
+    .screenshot-gallery::-webkit-scrollbar { display: none; }
+    .screenshot-gallery img {
+      height: 300px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .project-img-placeholder { 
+      width: 100%; height: 200px; background: var(--gallery-bg); 
+      display: flex; align-items: center; justify-content: center; color: var(--text-light); font-weight: 600;
+    }
+
     .project-info { padding: 2rem; flex-grow: 1; }
     .tag { font-size: 0.7rem; font-weight: 800; background: rgba(79, 70, 229, 0.1); color: var(--secondary); padding: 0.2rem 0.6rem; border-radius: 6px; margin-right: 0.4rem; }
 
@@ -135,7 +157,8 @@
 
     @media (max-width: 600px) {
       .skill-list { grid-template-columns: 1fr; }
-      #theme-toggle { bottom: 1rem; right: 1rem; }
+      .hero { padding-top: 10rem; }
+      .btn-group { flex-direction: column; }
     }
   </style>
 </head>
@@ -221,8 +244,25 @@
   <section class="projects-container" id="projects">
     <h2 class="section-title">Featured Work</h2>
     <div class="projects-grid">
+      
       <div class="project-card">
-        <div class="project-img">Quick Audit Preview</div>
+        <div class="screenshot-gallery">
+          <img src="assets/nhl-profile.jpg" alt="NHL App Profile View">
+          <img src="assets/nhl-home.jpg" alt="NHL App Game List">
+          <img src="assets/nhl-details.jpg" alt="NHL App Prediction Logic">
+        </div>
+        <div class="project-info">
+          <div style="margin-bottom: 0.5rem;">
+            <span class="tag">React Native</span><span class="tag">Supabase</span>
+          </div>
+          <h3>NHL Guessing Game</h3>
+          <p>Gamified sports platform with real-time score tracking, user stats, and prediction leaderboards.</p>
+          <a href="https://github.com/Gagan117/nhl-game-mobile-app" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img-placeholder">Quick Audit Preview</div>
         <div class="project-info">
           <span class="tag">React Native</span><span class="tag">FastAPI</span>
           <h3>Quick Audit</h3>
@@ -230,17 +270,9 @@
           <a href="https://github.com/Gagan117/QuickAudit" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">GitHub</a>
         </div>
       </div>
+
       <div class="project-card">
-        <div class="project-img">NHL Mobile Preview</div>
-        <div class="project-info">
-          <span class="tag">React Native</span><span class="tag">Supabase</span>
-          <h3>NHL Guessing Game</h3>
-          <p>Gamified sports prediction platform with real-time score tracking and leaderboards.</p>
-          <a href="https://github.com/Gagan117/nhl-game-mobile-app" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">GitHub</a>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-img">NHL Web Preview</div>
+        <div class="project-img-placeholder">NHL Web Preview</div>
         <div class="project-info">
           <span class="tag">React</span><span class="tag">AWS EC2</span>
           <h3>NHL Scores Web</h3>
@@ -248,8 +280,9 @@
           <a href="https://gagan117.github.io/nhl-scores-app/" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">Live Demo</a>
         </div>
       </div>
+
       <div class="project-card">
-        <div class="project-img">Task Manager Preview</div>
+        <div class="project-img-placeholder">Task Manager Preview</div>
         <div class="project-info">
           <span class="tag">MERN Stack</span>
           <h3>Task Manager</h3>
@@ -257,6 +290,7 @@
           <a href="https://gagan117.github.io/task-manager-frontend/" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">Live Demo</a>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -272,7 +306,6 @@
     const themeToggle = document.getElementById('theme-toggle');
     const currentTheme = localStorage.getItem('theme');
 
-    // Check for saved theme
     if (currentTheme) {
       document.documentElement.setAttribute('data-theme', currentTheme);
       themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌓';
