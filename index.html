@@ -107,27 +107,36 @@
     .btn-secondary { border-color: var(--border); color: var(--text-dark); }
     .btn:hover { transform: translateY(-3px); }
 
-    .skills-container { max-width: 1200px; margin: 4rem auto; padding: 0 5%; }
+    .skills-container, .experience-container { max-width: 1200px; margin: 4rem auto; padding: 0 5%; }
     .section-title { font-size: 2.2rem; margin-bottom: 3.5rem; text-align: center; font-weight: 800; }
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
     .skill-card { background: var(--card); padding: 2rem; border-radius: 24px; border: 1px solid var(--border); }
     .skill-card h3 { margin-bottom: 1.5rem; color: var(--primary); font-size: 1.1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem; }
     .skill-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     .skill-item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; font-weight: 600; color: var(--text-light); }
     .skill-item i { font-size: 1.25rem; color: var(--text-dark); width: 20px; text-align: center; }
 
+    /* --- EXPERIENCE STYLING --- */
+    .experience-grid { display: flex; flex-direction: column; gap: 1.5rem; max-width: 900px; margin: 0 auto; }
+    .experience-card { background: var(--card); padding: 2rem; border-radius: 20px; border: 1px solid var(--border); }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem; }
+    .exp-role { font-size: 1.2rem; font-weight: 700; color: var(--text-dark); }
+    .exp-company { font-weight: 600; color: var(--secondary); }
+    .exp-date { font-size: 0.85rem; font-weight: 600; color: var(--text-light); }
+    .exp-bullets { list-style-position: inside; color: var(--text-light); font-size: 0.95rem; margin-top: 0.5rem; }
+    .exp-bullets li { margin-bottom: 0.4rem; }
+
     .projects-container { background: rgba(0,0,0,0.02); padding: 6rem 5%; }
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto; }
     .project-card { background: var(--card); border-radius: 24px; overflow: hidden; border: 1px solid var(--border); display: flex; flex-direction: column; height: 100%; transition: 0.3s; }
     .project-card:hover { transform: translateY(-5px); border-color: var(--secondary); }
 
-    /* --- ENHANCED GALLERY SCROLL --- */
     .screenshot-gallery {
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
       gap: 20px;
-      overflow-x: auto; /* Active scrolling */
+      overflow-x: auto;
       overflow-y: hidden;
       padding: 1.5rem;
       background: var(--gallery-bg);
@@ -137,22 +146,14 @@
       -webkit-overflow-scrolling: touch;
     }
 
-    /* Modern Visible Scrollbar for Desktop */
-    .screenshot-gallery::-webkit-scrollbar {
-      height: 8px;
-    }
-    .screenshot-gallery::-webkit-scrollbar-track {
-      background: var(--gallery-bg);
-    }
-    .screenshot-gallery::-webkit-scrollbar-thumb {
-      background: var(--text-light);
-      border-radius: 10px;
-    }
+    .screenshot-gallery::-webkit-scrollbar { height: 8px; }
+    .screenshot-gallery::-webkit-scrollbar-track { background: var(--gallery-bg); }
+    .screenshot-gallery::-webkit-scrollbar-thumb { background: var(--text-light); border-radius: 10px; }
 
     .screenshot-gallery img {
       height: 400px;
       width: auto;
-      flex: 0 0 auto; /* Stop images from shrinking */
+      flex: 0 0 auto;
       border-radius: 18px;
       border: 1px solid var(--border);
       box-shadow: 0 8px 20px rgba(0,0,0,0.12);
@@ -164,8 +165,9 @@
       display: flex; align-items: center; justify-content: center; color: var(--text-light); font-weight: 600;
     }
 
-    .project-info { padding: 2rem; flex-grow: 1; }
-    .tag { font-size: 0.7rem; font-weight: 800; background: rgba(79, 70, 229, 0.1); color: var(--secondary); padding: 0.2rem 0.6rem; border-radius: 6px; margin-right: 0.4rem; }
+    .project-info { padding: 2rem; flex-grow: 1; display: flex; flex-direction: column; }
+    .project-info p { margin-bottom: 1rem; flex-grow: 1; }
+    .tag { font-size: 0.7rem; font-weight: 800; background: rgba(79, 70, 229, 0.1); color: var(--secondary); padding: 0.2rem 0.6rem; border-radius: 6px; margin-right: 0.4rem; margin-bottom: 0.4rem; inline-block; }
 
     footer { padding: 4rem 5%; text-align: center; border-top: 1px solid var(--border); }
 
@@ -186,6 +188,7 @@
     <div class="nav-links">
       <a href="#home">Home</a>
       <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
       <a href="#projects">Work</a>
     </div>
   </nav>
@@ -207,8 +210,8 @@
       <div class="skill-card">
         <h3>Languages</h3>
         <div class="skill-list">
-          <div class="skill-item"><i class="devicon-java-plain"></i> Java</div>
           <div class="skill-item"><i class="devicon-python-plain"></i> Python</div>
+          <div class="skill-item"><i class="devicon-java-plain"></i> Java</div>
           <div class="skill-item"><i class="devicon-swift-plain"></i> Swift</div>
           <div class="skill-item"><i class="devicon-kotlin-plain"></i> Kotlin</div>
           <div class="skill-item"><i class="devicon-javascript-plain"></i> JavaScript</div>
@@ -216,12 +219,12 @@
         </div>
       </div>
       <div class="skill-card">
-        <h3>Frameworks</h3>
+        <h3>Frameworks & AI</h3>
         <div class="skill-list">
           <div class="skill-item"><i class="devicon-react-original"></i> React Native</div>
           <div class="skill-item"><i class="devicon-react-original"></i> React.js</div>
           <div class="skill-item"><i class="devicon-fastapi-plain"></i> FastAPI</div>
-          <div class="skill-item"><i class="devicon-spring-plain"></i> Spring Boot</div>
+          <div class="skill-item"><i class="devicon-pytorch-original"></i> PyTorch</div>
           <div class="skill-item"><i class="devicon-nodejs-plain"></i> Node.js</div>
           <div class="skill-item"><i class="devicon-dotnetcore-plain"></i> .NET Core</div>
         </div>
@@ -247,6 +250,40 @@
           <div class="skill-item"><i class="devicon-androidstudio-plain"></i> Android Studio</div>
           <div class="skill-item"><i class="devicon-jira-plain"></i> Jira</div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience-container" id="experience">
+    <h2 class="section-title">Work Experience</h2>
+    <div class="experience-grid">
+      <div class="experience-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Machine Learning Developer</div>
+            <div class="exp-company">Center of Applied AI</div>
+          </div>
+          <div class="exp-date">May 2026 – Aug 2026</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Trained and fine-tuned MobileNet vision classifiers on NVIDIA DGX workstations using PyTorch.</li>
+          <li>Engineered cross-platform React Native mobile integrations using ONNX Runtime for offline classification.</li>
+          <li>Integrated Random Forest screening algorithms via high-throughput FastAPI microservices.</li>
+        </ul>
+      </div>
+
+      <div class="experience-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Quality Control & Logistics Assistant</div>
+            <div class="exp-company">Metrie</div>
+          </div>
+          <div class="exp-date">May 2019 – Jan 2024</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Managed inventory verification and logistics workflows using SAP systems.</li>
+          <li>Ensured strict quality assurance standards across incoming/outgoing shipment pipelines.</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -278,19 +315,35 @@
           <img src="/assets/QAInsights.jpg" alt="Quick Audit Insights">
         </div>
         <div class="project-info">
-          <span class="tag">React Native</span><span class="tag">Gemini AI</span>
-          <h3>Quick Audit</h3>
-          <p>Eliminating manual data entry in personal finance. Quick Audit uses advanced computer vision and LLMs to instantly extract line-item data from receipts, providing users with automated expense tracking and intelligent spending insights.</p>
+          <div style="margin-bottom: 0.5rem;">
+            <span class="tag">React Native</span><span class="tag">FastAPI</span><span class="tag">Ollama Vision</span>
+          </div>
+          <h3>Quick Audit (Receipt AI)</h3>
+          <p>Eliminating manual data entry in personal finance. Quick Audit uses multimodal computer vision and LLMs to instantly extract line-item data from receipt images, providing users with automated expense tracking and intelligent spending insights.</p>
           <a href="https://github.com/Gagan117/QuickAudit" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">View Code</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img-placeholder">iOS Gas Tracker Preview</div>
+        <div class="project-info">
+          <div style="margin-bottom: 0.5rem;">
+            <span class="tag">SwiftUI</span><span class="tag">MapKit</span><span class="tag">Firebase</span><span class="tag">WidgetKit</span>
+          </div>
+          <h3>GasTracker iOS</h3>
+          <p>A native iOS application providing location-based fuel tracking. Integrates MapKit for interactive station navigation, Firebase Firestore for crowd-sourced pricing updates, and custom WidgetKit components for home screen updates.</p>
+          <a href="https://github.com/Gagan117" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">View Code</a>
         </div>
       </div>
 
       <div class="project-card">
         <div class="project-img-placeholder">NHL Web Dashboard</div>
         <div class="project-info">
-          <span class="tag">React</span><span class="tag">AWS EC2</span><span class="tag">Nginx</span>
+          <div style="margin-bottom: 0.5rem;">
+            <span class="tag">React</span><span class="tag">AWS EC2</span><span class="tag">Docker</span><span class="tag">Nginx</span>
+          </div>
           <h3>NHL Scores Web</h3>
-          <p>Live stats dashboard deployed with Nginx reverse proxy on AWS.</p>
+          <p>Live stats dashboard deployed with Nginx reverse proxy and Docker containers on AWS EC2 infrastructure for minimal latency live scoring.</p>
           <a href="https://gagan117.github.io/nhl-scores-app/" target="_blank" class="btn btn-primary" style="display: block; text-align: center; margin-top: 1rem;">Live Demo</a>
         </div>
       </div>
@@ -301,7 +354,7 @@
   <footer>
     <div style="margin-bottom: 2rem;">
       <a href="https://github.com/Gagan117" target="_blank" style="margin: 0 1rem; color: var(--text-dark); text-decoration: none; font-weight: 700;">GitHub</a>
-      <a href="mailto:gaganvir.bhullar@example.com" style="margin: 0 1rem; color: var(--text-dark); text-decoration: none; font-weight: 700;">Email</a>
+      <a href="mailto:gaganvirbhullar@gmail.com" style="margin: 0 1rem; color: var(--text-dark); text-decoration: none; font-weight: 700;">Email</a>
     </div>
     <p style="font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Gaganvir Bhullar</p>
   </footer>
@@ -343,4 +396,5 @@
   </script>
 
 </body>
+</html>
 </html>
